@@ -319,7 +319,7 @@ function saveTaskChanges(taskId) {
 
   // Create an object with the updated task details
    const updatedTask = {
-    board: activeBoardoard,
+    board: activeBoard,
     description: elements.editTaskDescInput.value,
     id: JSON.parse(localStorage.getItem("id")),
     status: elements.editSelectStatus.value,
