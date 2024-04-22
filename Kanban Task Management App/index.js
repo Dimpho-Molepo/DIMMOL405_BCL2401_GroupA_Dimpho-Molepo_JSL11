@@ -206,6 +206,8 @@ function setupEventListeners() {
   elements.hideSideBarBtn.onclick = () =>  toggleSidebar(false);
   elements.showSideBarBtn.onclick = () =>  toggleSidebar(true);
 
+  elements.showSideBarBtn.style.display = "block";
+
   // Theme switch event listener
   elements.themeSwitch.addEventListener('change', toggleTheme);
 
