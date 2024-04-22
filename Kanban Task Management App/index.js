@@ -297,11 +297,13 @@ function openEditTaskModal(task) {
   // Call saveTaskChanges upon click of Save Changes button
   elements.saveTaskChangesBtn.onclick = () => {
     saveTaskChanges(task.id);
+    toggleModal(false, elements.editTaskModal);
     refreshTasksUI();
   };
 
   elements.deleteTaskBtn.onclick = () => {
     saveTaskChanges(task.id);
+    toggleModal(false, elements.editTaskModal);
     refreshTasksUI();
   };
 
