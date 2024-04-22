@@ -205,10 +205,12 @@ function setupEventListeners() {
   });
 
   // Show sidebar event listener
-  elements.hideSideBarBtn.onclick = () =>  toggleSidebar(false);
+  elements.hideSideBarBtn.onclick = () =>  {
+    toggleSidebar(false)
+    elements.showSideBarBtn.style.display = "block";
+  };
   elements.showSideBarBtn.onclick = () =>  toggleSidebar(true);
 
-  elements.showSideBarBtn.style.display = "block";
 
   // Theme switch event listener
   elements.themeSwitch.addEventListener('change', toggleTheme);
@@ -227,7 +229,7 @@ function setupEventListeners() {
 
 // Toggles tasks modal
 // Task: Fix bugs
-function toggleModal(show) {
+function toggleModal(show ) {
   elements.modalWindow.style.display = show ? 'block' : 'none'; 
 }
 
@@ -254,11 +256,12 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
-  const sideBar = elements.sideBar;
   if (show) {
-    sideBar.style.display = 'block';
+    elements.sideBar.style.display = "block";
+    elements.showSideBarBtn.style.display = "none";
   } else {
-    sideBar.style.display = 'none';
+    elements.sideBar.style.display = "none";
+    elements.hideSideBarBtn.style.display = "block";
   }
  
 }
