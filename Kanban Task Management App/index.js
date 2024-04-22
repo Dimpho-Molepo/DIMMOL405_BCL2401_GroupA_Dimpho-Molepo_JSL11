@@ -253,7 +253,11 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
-      
+      board: activeBoard, 
+      description: elements.descriptionInput.value,
+      id: JSON.parse(localStorage.getItem("id")),
+      status: elements.selectStatus.value,
+      title: elements.titleInput.value,
     };
     const newTask = createNewTask(task);
     if (newTask) {
@@ -302,7 +306,7 @@ function openEditTaskModal(task) {
   };
 
   elements.deleteTaskBtn.onclick = () => {
-    saveTaskChanges(task.id);
+    deleteTask(task.id);
     toggleModal(false, elements.editTaskModal);
     refreshTasksUI();
   };
@@ -323,11 +327,11 @@ function saveTaskChanges(taskId) {
     description: elements.editTaskDescInput.value,
     id: JSON.parse(localStorage.getItem("id")),
     status: elements.editSelectStatus.value,
-    title: elements.editTaskTitleInput.value,
+    title: elements.editTaskTitleInput.value
   };
 
   // Update task using a hlper functoin
-  putTask(task.id, updatedTask);
+  putTask(taskId, updatedTask);
 
   // Close the modal and refresh the UI to reflect the changes
 
