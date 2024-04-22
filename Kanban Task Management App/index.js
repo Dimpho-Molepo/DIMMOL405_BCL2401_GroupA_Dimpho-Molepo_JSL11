@@ -252,6 +252,12 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
+  const sideBar = elements.sideBar;
+  if (show) {
+    sideBar.style.display = 'block';
+  } else {
+    sideBar.style.display = 'none';
+  }
  
 }
 
