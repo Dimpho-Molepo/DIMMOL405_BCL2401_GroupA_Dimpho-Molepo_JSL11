@@ -228,6 +228,7 @@ function setupEventListeners() {
   // Show Add New Task Modal event listener
   elements.createNewTaskBtn.addEventListener('click', () => {
     toggleModal(true);
+    createNewTask();
     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
   });
 
@@ -292,7 +293,9 @@ function openEditTaskModal(task) {
 
 
   // Call saveTaskChanges upon click of Save Changes button
- 
+  elements.saveTaskChangesBtn.onclick = () => saveTaskChanges(task);
+
+  elements.deleteTaskBtn.onclick = () => deleteTask(task);
 
   // Delete task using a helper function and close the task modal
 
