@@ -318,10 +318,16 @@ function saveTaskChanges(taskId) {
   
 
   // Create an object with the updated task details
-
+   const updatedTask = {
+    board: board,
+    description: elements.editTaskDescInput.value,
+    id: task.id,
+    status: elements.editSelectStatus.value,
+    title: elements.editTaskTitleInput.value,
+  };
 
   // Update task using a hlper functoin
- 
+  putTask(task.id, updatedTask);
 
   // Close the modal and refresh the UI to reflect the changes
 
