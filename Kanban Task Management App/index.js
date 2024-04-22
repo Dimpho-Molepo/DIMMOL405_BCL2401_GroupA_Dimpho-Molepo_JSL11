@@ -106,6 +106,7 @@ function displayBoards(boards) {
   });
 
 }
+const selectStatusoption = elements.selectStatus.options[selectedIndex].value;
 
 // Filters tasks corresponding to the board name and displays them on the DOM.
 // TASK: Fix Bugs
@@ -120,7 +121,7 @@ function filterAndDisplayTasksByBoard(boardName) {
     // Reset column content while preserving the column title
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
-                          <h4 class="columnHeader">${status.toUpperCase()}</h4>
+                          <h4 class="columnHeader">${selectStatusoption.toUpperCase()}</h4>
                         </div>`;
 
     const tasksContainer = document.createElement("div");
