@@ -127,13 +127,13 @@ function filterAndDisplayTasksByBoard(boardName) {
     // Reset column content while preserving the column title
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
-                          <h4 class="columnHeader">${statusSelection.toUpperCase()}</h4>
+                          <h4 class="columnHeader">${statusSelections.toUpperCase()}</h4>
                         </div>`;
 
     const tasksContainer = document.createElement("div");
     column.appendChild(tasksContainer);
 
-    filteredTasks.filter(task => task.status = status).forEach(task => { 
+    filteredTasks.filter(task => task.status === status).forEach(task => { 
       const taskElement = document.createElement("div");
       taskElement.classList.add("task-div");
       taskElement.textContent = task.title;
