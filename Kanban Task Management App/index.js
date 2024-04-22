@@ -295,9 +295,15 @@ function openEditTaskModal(task) {
   elements.editTaskDescInput.value = task.description;
 
   // Call saveTaskChanges upon click of Save Changes button
-  elements.saveTaskChangesBtn.onclick = () => saveTaskChanges(task.id);
+  elements.saveTaskChangesBtn.onclick = () => {
+    saveTaskChanges(task.id);
+    refreshTasksUI();
+  };
 
-  elements.deleteTaskBtn.onclick = () => deleteTask(task.id);
+  elements.deleteTaskBtn.onclick = () => {
+    saveTaskChanges(task.id);
+    refreshTasksUI();
+  };
 
   // Delete task using a helper function and close the task modal
 
