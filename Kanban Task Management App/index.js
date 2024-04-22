@@ -6,6 +6,7 @@ import {
   patchTask,
   putTask,
   deleteTask} from './utils/taskFunctions.js';
+  import {initialData} from './initialData.js';
 
 /*************************************************************************************************************************************************
  * FIX BUGS!!!
