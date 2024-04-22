@@ -30,6 +30,8 @@ const elements = {
   themeSwitch: document.getElementById("switch"),
   hideSideBarBtn: document.getElementById("hide-side-bar-btn"),
   showSideBarBtn: document.getElementById("show-side-bar-btn"),
+  sideBar: document.querySelector(".side-bar"),
+
 
 
   // editTaskModal: document.getElementById("edit-task-modal-window"),
@@ -225,8 +227,8 @@ function setupEventListeners() {
 
 // Toggles tasks modal
 // Task: Fix bugs
-function toggleModal(show, modal = elements.modalWindow) {
-  modal.style.display = show ? 'block' : 'none'; 
+function toggleModal(show) {
+  elements.modalWindow.style.display = show ? 'block' : 'none'; 
 }
 
 /*************************************************************************************************************************************************
