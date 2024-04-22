@@ -206,10 +206,13 @@ function setupEventListeners() {
 
   // Show sidebar event listener
   elements.hideSideBarBtn.onclick = () =>  {
-    toggleSidebar(false)
+    toggleSidebar(false);
     elements.showSideBarBtn.style.display = "block";
   };
-  elements.showSideBarBtn.onclick = () =>  toggleSidebar(true);
+  elements.showSideBarBtn.onclick = () =>  {
+    toggleSidebar(true)
+    elements.showSideBarBtn.style.display = "none";
+  };
 
 
   // Theme switch event listener
@@ -258,10 +261,10 @@ function addTask(event) {
 function toggleSidebar(show) {
   if (show) {
     elements.sideBar.style.display = "block";
-    elements.showSideBarBtn.style.display = "none";
+    // elements.showSideBarBtn.style.display = "none";
   } else {
     elements.sideBar.style.display = "none";
-    elements.hideSideBarBtn.style.display = "block";
+    // elements.hideSideBarBtn.style.display = "block";
   }
  
 }
