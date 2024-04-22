@@ -270,7 +270,9 @@ function toggleSidebar(show) {
 }
 
 function toggleTheme() {
- 
+  elements.themeSwitch.classList.add("light-theme");
+  elements.themeSwitch.classList.toggle("light-theme");
+  // elements.themeSwitch.classList.toggle("dark-theme");
 }
 
 
