@@ -273,18 +273,20 @@ function addTask(event) {
 function toggleSidebar(show) {
   if (show) {
     elements.sideBar.style.display = "block";
-    // elements.showSideBarBtn.style.display = "none";
   } else {
     elements.sideBar.style.display = "none";
-    // elements.hideSideBarBtn.style.display = "block";
   }
  
 }
 
 function toggleTheme() {
-  // elements.themeSwitch.classList.add("light-theme");
+  const isLightTheme = document.body.classList.contains('light-theme');
   document.body.classList.toggle("light-theme");
-  // elements.themeSwitch.classList.toggle("dark-theme");
+  const logo = document.getElementById('logo');
+  logo.classList.add('light-theme');
+  logo.classList.toggle('light-theme');
+  localStorage.setItem('light-theme', isLightTheme ? logo.src = './assets/logo-dark.svg' : logo.src = './assets/logo-light.svg');
+  localStorage.setItem('light-theme', !isLightTheme ? 'enabled' : 'disabled');
 }
 
 
@@ -305,13 +307,14 @@ function openEditTaskModal(task) {
     refreshTasksUI();
   };
 
+  // Delete task using a helper function and close the task modal
   elements.deleteTaskBtn.onclick = () => {
     deleteTask(task.id);
     toggleModal(false, elements.editTaskModal);
     refreshTasksUI();
   };
 
-  // Delete task using a helper function and close the task modal
+ 
 
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
