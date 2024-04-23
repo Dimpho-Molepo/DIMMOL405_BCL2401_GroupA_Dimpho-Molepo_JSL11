@@ -127,7 +127,7 @@ function filterAndDisplayTasksByBoard(boardName) {
     // Reset column content while preserving the column title
     column.innerHTML = `<div class="column-head-div">
                           <span class="dot" id="${status}-dot"></span>
-                          <h4 class="columnHeader">${statusSelections.toUpperCase()}</h4>
+                          <h4 class="columnHeader">${statusSelections}</h4>
                         </div>`;
 
     const tasksContainer = document.createElement("div");
@@ -212,12 +212,8 @@ function setupEventListeners() {
   });
 
   // Show sidebar event listener
-  elements.hideSideBarBtn.onclick = () =>  {
-    toggleSidebar(false);
-  };
-  elements.showSideBarBtn.onclick = () =>  {
-    toggleSidebar(true)
-  };
+  elements.hideSideBarBtn.onclick = () =>  toggleSidebar(false);
+  elements.showSideBarBtn.onclick = () => toggleSidebar(true);
 
   // Theme switch event listener
   elements.themeSwitch.addEventListener('change', toggleTheme);
@@ -278,10 +274,17 @@ function toggleTheme() {
   const isLightTheme = document.body.classList.contains('light-theme');
   document.body.classList.toggle("light-theme");
   const logo = document.getElementById('logo');
-  logo.classList.add('light-theme');
-  logo.classList.toggle('light-theme');
-  localStorage.setItem('light-theme', isLightTheme ? logo.src = './assets/logo-dark.svg' : logo.src = './assets/logo-light.svg');
-  localStorage.setItem('light-theme', !isLightTheme ? 'enabled' : 'disabled');
+  // isLightTheme ? logo.src = './assets/logo-dark.svg' : logo.src = './assets/logo-light.svg';
+  // localStorage.setItem('light-theme', !isLightTheme ? 'enabled' : 'disabled');
+  if (isLightTheme) {
+    logo.src = './assets/logo-dark.svg';
+    localStorage.setItem('logo', './assets/logo-dark.svg');
+    localStorage.setItem('light-theme', 'disabled');
+  } else {
+    logo.src = './assets/logo-light.svg';
+    localStorage.setItem('logo', './assets/logo-light.svg');
+    localStorage.setItem('light-theme', 'enabled');
+  }
 }
 
 
@@ -324,7 +327,7 @@ function saveTaskChanges(taskId) {
   };
 
   // Update task using a helper functoin
-  patchTask(taskId, updatedTask);
+  putTask(taskId, updatedTask);
 
   // Close the modal and refresh the UI to reflect the changes
   toggleModal(false, elements.editTaskModal);
@@ -338,6 +341,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function init() {
+  if (localStorage.getItem('logo') === './assets/logo-light.svg'){
+    logo.src = './assets/logo-light.svg';
+  }
   setupEventListeners();
   const showSidebar = localStorage.getItem('showSideBar') === 'true';
   toggleSidebar(showSidebar);
