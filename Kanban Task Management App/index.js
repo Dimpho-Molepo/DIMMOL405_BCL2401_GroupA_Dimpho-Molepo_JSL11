@@ -228,7 +228,7 @@ function setupEventListeners() {
   // Show Add New Task Modal event listener
   elements.createNewTaskBtn.addEventListener('click', () => {
     toggleModal(true);
-    createNewTask();
+    // createNewTask();
     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
   });
 
@@ -236,10 +236,7 @@ function setupEventListeners() {
   elements.modalWindow.addEventListener('submit',  (event) => {
     addTask(event)
   });
-
-  elements.editBoardBtn.onclick = () => {
-    elements.deleteBoardBtn.style.display = 'block';
-  }
+  
 }
 
 // Toggles tasks modal
