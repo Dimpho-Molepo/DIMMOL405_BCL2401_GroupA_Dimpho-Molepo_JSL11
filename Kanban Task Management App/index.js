@@ -219,14 +219,12 @@ function setupEventListeners() {
     toggleSidebar(true)
   };
 
-
   // Theme switch event listener
   elements.themeSwitch.addEventListener('change', toggleTheme);
 
   // Show Add New Task Modal event listener
   elements.createNewTaskBtn.addEventListener('click', () => {
     toggleModal(true);
-    // createNewTask();
     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
   });
 
@@ -304,9 +302,11 @@ function openEditTaskModal(task) {
 
   // Delete task using a helper function and close the task modal
   elements.deleteTaskBtn.onclick = () => {
-    deleteTask(task.id);
-    toggleModal(false, elements.editTaskModal);
-    refreshTasksUI();
+    if (confirm("Are you sure you want to delete this task?")) { // 🟥 Extra feature 
+      deleteTask(task.id);
+      toggleModal(false, elements.editTaskModal);
+      refreshTasksUI(); 
+    }
   };
 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
