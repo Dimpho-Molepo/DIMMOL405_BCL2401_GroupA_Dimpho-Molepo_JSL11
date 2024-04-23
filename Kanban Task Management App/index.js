@@ -272,12 +272,7 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
-  if (show) {
-    elements.sideBar.style.display = "block";
-  } else {
-    elements.sideBar.style.display = "none";
-  }
- 
+  elements.sideBar.style.display = show ? 'block' : 'none';
 }
 
 function toggleTheme() {
@@ -293,8 +288,6 @@ function toggleTheme() {
 
 
 function openEditTaskModal(task) {
-  // Set task details in modal inputs
-  
 
   // Get button elements from the task modal
   elements.editTaskTitleInput.value = task.title;
@@ -315,15 +308,10 @@ function openEditTaskModal(task) {
     refreshTasksUI();
   };
 
- 
-
-
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
 
 function saveTaskChanges(taskId) {
-  // Get new user inputs
-  
 
   // Create an object with the updated task details
    const updatedTask = {
@@ -334,7 +322,7 @@ function saveTaskChanges(taskId) {
     title: elements.editTaskTitleInput.value
   };
 
-  // Update task using a hlper functoin
+  // Update task using a helper functoin
   patchTask(taskId, updatedTask);
 
   // Close the modal and refresh the UI to reflect the changes
