@@ -236,6 +236,10 @@ function setupEventListeners() {
   elements.modalWindow.addEventListener('submit',  (event) => {
     addTask(event)
   });
+
+  elements.editBoardBtn.onclick = () => {
+    elements.deleteBoardBtn.style.display = 'block';
+  }
 }
 
 // Toggles tasks modal
@@ -353,5 +357,6 @@ function init() {
   toggleSidebar(showSidebar);
   const isLightTheme = localStorage.getItem('light-theme') === 'enabled';
   document.body.classList.toggle('light-theme', isLightTheme);
+  elements.themeSwitch.checked = isLightTheme;
   fetchAndDisplayBoardsAndTasks(); // Initial display of boards and tasks
 }
