@@ -214,11 +214,9 @@ function setupEventListeners() {
   // Show sidebar event listener
   elements.hideSideBarBtn.onclick = () =>  {
     toggleSidebar(false);
-    elements.showSideBarBtn.style.display = "block";
   };
   elements.showSideBarBtn.onclick = () =>  {
     toggleSidebar(true)
-    elements.showSideBarBtn.style.display = "none";
   };
 
 
@@ -273,6 +271,8 @@ function addTask(event) {
 
 function toggleSidebar(show) {
   elements.sideBar.style.display = show ? 'block' : 'none';
+  elements.showSideBarBtn.style.display = show ? 'none' : 'block';
+
   localStorage.setItem('showSideBar', show);
 }
 
