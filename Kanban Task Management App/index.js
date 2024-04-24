@@ -16,7 +16,7 @@ import {
 function initializeData() {
   if (!localStorage.getItem('tasks')) {
     localStorage.setItem('tasks', JSON.stringify(initialData)); 
-    localStorage.setItem('showSideBar', 'true')
+    localStorage.setItem('showSideBar', 'false')
   } else {
     console.log('Data already exists in localStorage');
   }
@@ -31,10 +31,7 @@ const elements = {
   hideSideBarBtn: document.getElementById("hide-side-bar-btn"),
   showSideBarBtn: document.getElementById("show-side-bar-btn"),
   sideBar: document.querySelector(".side-bar"),
-
-
-
-  // editTaskModal: document.getElementById("edit-task-modal-window"),
+  sideBarBottom: document.querySelector(".side-bar-bottom"),
 
   // Main Layout: Header with board title, add task button, and main content area for task columns.
   headerBoardName: document.getElementById("header-board-name"),
@@ -248,7 +245,7 @@ function addTask(event) {
     const task = {
       board: activeBoard, 
       description: elements.descriptionInput.value,
-      id: JSON.parse(localStorage.getItem("id")),
+      id: localStorage.getItem("id"),
       status: elements.selectStatus.value,
       title: elements.titleInput.value,
     };
@@ -321,7 +318,7 @@ function saveTaskChanges(taskId) {
    const updatedTask = {
     board: activeBoard,
     description: elements.editTaskDescInput.value,
-    id: JSON.parse(localStorage.getItem("id")),
+    id: taskId,
     status: elements.editSelectStatus.value,
     title: elements.editTaskTitleInput.value
   };
