@@ -229,27 +229,25 @@ function setupEventListeners() {
 }
 
 // Toggles tasks modal
-// Task: Fix bugs
 function toggleModal(show, modal = elements.modalWindow ) {
   modal.style.display = show ? 'block' : 'none'; 
 }
 
-/*************************************************************************************************************************************************
- * COMPLETE FUNCTION CODE
- * **********************************************************************************************************************************************/
 
 function addTask(event) {
   event.preventDefault(); 
 
   //Assign user input to the task object
     const task = {
-      board: activeBoard, 
-      description: elements.descriptionInput.value,
-      id: localStorage.getItem("id"),
-      status: elements.selectStatus.value,
+      id: '',
       title: elements.titleInput.value,
+      description: elements.descriptionInput.value,
+      status: elements.selectStatus.value,
+      board: activeBoard, 
     };
+    //Create a new task object and add it to the array
     const newTask = createNewTask(task);
+    //Add the task to the UI
     if (newTask) {
       addTaskToUI(newTask);
       toggleModal(false);
@@ -259,7 +257,7 @@ function addTask(event) {
     }
 }
 
-
+// 
 function toggleSidebar(show) {
   elements.sideBar.style.display = show ? 'block' : 'none';
   elements.showSideBarBtn.style.display = show ? 'none' : 'block';
@@ -271,8 +269,7 @@ function toggleTheme() {
   const isLightTheme = document.body.classList.contains('light-theme');
   document.body.classList.toggle("light-theme");
   const logo = document.getElementById('logo');
-  // isLightTheme ? logo.src = './assets/logo-dark.svg' : logo.src = './assets/logo-light.svg';
-  // localStorage.setItem('light-theme', !isLightTheme ? 'enabled' : 'disabled');
+  
   if (isLightTheme) {
     logo.src = './assets/logo-dark.svg';
     localStorage.setItem('logo', './assets/logo-dark.svg');
@@ -284,6 +281,7 @@ function toggleTheme() {
   }
 }
 
+// 🟥 Extra styling of the side bar 
 document.getElementById("boards-nav-links-div").style.marginTop = "50px";
 document.getElementById("boards-nav-links-div").style.marginBottom = "300px";
 
@@ -303,7 +301,7 @@ function openEditTaskModal(task) {
 
   // Delete task using a helper function and close the task modal
   elements.deleteTaskBtn.onclick = () => {
-    if (confirm("Are you sure you want to delete this task?")) { // 🟥 Extra feature 
+    if (confirm("Are you sure you want to delete this task?")) { // 🟥 Extra feature that asks for confirmation before deleting
       deleteTask(task.id);
       toggleModal(false, elements.editTaskModal);
       refreshTasksUI(); 
@@ -317,11 +315,11 @@ function saveTaskChanges(taskId) {
 
   // Create an object with the updated task details
    const updatedTask = {
-    board: activeBoard,
-    description: elements.editTaskDescInput.value,
     id: taskId,
+    title: elements.editTaskTitleInput.value,
+    description: elements.editTaskDescInput.value,
     status: elements.editSelectStatus.value,
-    title: elements.editTaskTitleInput.value
+    board: activeBoard, 
   };
 
   // Update task using a helper functoin
