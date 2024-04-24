@@ -284,7 +284,8 @@ function toggleTheme() {
   }
 }
 
-
+document.getElementById("boards-nav-links-div").style.marginTop = "50px";
+document.getElementById("boards-nav-links-div").style.marginBottom = "300px";
 
 function openEditTaskModal(task) {
 
