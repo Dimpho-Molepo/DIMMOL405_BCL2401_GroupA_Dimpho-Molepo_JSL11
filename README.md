@@ -11,6 +11,8 @@ The Agile Board project is the final project for the JSL course, where we take o
 + Debugging tasks, such as setting up data in local storage, dynamically displaying boards and tasks, and improving user interactions
 + Crafting code to meet specific functionalities outlined in the user stories
 
+![JSL11_solution](https://github.com/Dimpho-Molepo/DIMMOL405_BCL2401_GroupA_Dimpho-Molepo_JSL11/assets/136012291/ac4f748d-779d-4ae2-8000-0777c27ff134)
+
 ## Getting Started
 
 + Starter Code: The starter code provided for the user interface (UI) of the application, including the basic layout and some JavaScript (JS) functionality.
@@ -32,7 +34,6 @@ The following user stories describe the features that need to be implemented in 
 - **Editing Task Details**: As a user, I want to edit the details of an existing task to correct or update information as needed.
 - **Easy Navigation Between Task Statuses**: As a user, I want to easily move tasks between statuses (todo, doing, done) to reflect their current progress.
 - **Viewing Task Details**: As a user, I want to view detailed information about a task to understand its scope and requirements fully.
-![alt text](assets/JSL11_solution.gif)
  
 
 ## Learning Outcomes
