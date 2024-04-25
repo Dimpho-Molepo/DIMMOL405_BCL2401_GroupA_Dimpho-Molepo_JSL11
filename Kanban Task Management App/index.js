@@ -5,12 +5,11 @@ import {
   createNewTask,
   patchTask,
   putTask,
-  deleteTask} from './utils/taskFunctions.js';
-  import {initialData} from './initialData.js';
+  deleteTask
+} from './utils/taskFunctions.js';
 
-/*************************************************************************************************************************************************
- * FIX BUGS!!!
- * **********************************************************************************************************************************************/
+import {initialData} from './initialData.js';
+
 
 // Function checks if local storage already has data, if not it loads initialData to localStorage
 function initializeData() {
@@ -103,7 +102,7 @@ function displayBoards(boards) {
   });
 
 }
-// const selectStatusoption = elements.selectStatus.options[selectedIndex].value;
+
 const statusSelection = {
   todo: "TODO",
   doing: "DOING",
@@ -111,7 +110,6 @@ const statusSelection = {
 }
 
 // Filters tasks corresponding to the board name and displays them on the DOM.
-// TASK: Fix Bugs
 function filterAndDisplayTasksByBoard(boardName) {
   const tasks = getTasks(); // Fetch tasks from a simulated local storage function
   const filteredTasks = tasks.filter(task => task.board === boardName);
@@ -146,13 +144,12 @@ function filterAndDisplayTasksByBoard(boardName) {
   });
 }
 
-
+// Refresh the tasks UI when the active board is changed.
 function refreshTasksUI() {
   filterAndDisplayTasksByBoard(activeBoard);
 }
 
 // Styles the active board by adding an active class
-// TASK: Fix Bugs
 function styleActiveBoard(boardName) {
   document.querySelectorAll('.board-btn').forEach(btn => { 
     
@@ -164,7 +161,7 @@ function styleActiveBoard(boardName) {
   });
 }
 
-
+// Adds new task to the UI
 function addTaskToUI(task) {
   const column = document.querySelector(`.column-div[data-status="${task.status}"]`); 
   if (!column) {
@@ -187,7 +184,6 @@ function addTaskToUI(task) {
   
   tasksContainer.appendChild(taskElement); 
 }
-
 
 
 function setupEventListeners() {
@@ -233,7 +229,7 @@ function toggleModal(show, modal = elements.modalWindow ) {
   modal.style.display = show ? 'block' : 'none'; 
 }
 
-
+// Handles form submission event when a user submits the "Add Task" form.
 function addTask(event) {
   event.preventDefault(); 
 
@@ -257,7 +253,7 @@ function addTask(event) {
     }
 }
 
-// 
+// Toggles the sidebar and set the local storage to remember the state
 function toggleSidebar(show) {
   elements.sideBar.style.display = show ? 'block' : 'none';
   elements.showSideBarBtn.style.display = show ? 'none' : 'block';
@@ -265,6 +261,7 @@ function toggleSidebar(show) {
   localStorage.setItem('showSideBar', show);
 }
 
+// Toggles the theme and logo and set the local storage to remember the state
 function toggleTheme() {
   const isLightTheme = document.body.classList.contains('light-theme');
   document.body.classList.toggle("light-theme");
@@ -281,12 +278,12 @@ function toggleTheme() {
   }
 }
 
-// 🟥 Extra styling of the side bar 
+// 🟥 Extra styling for the side bar 
 document.getElementById("boards-nav-links-div").style.marginTop = "50px";
 document.getElementById("boards-nav-links-div").style.marginBottom = "300px";
 
+// Fills the edit task modal with task details and sets up event listeners for saving/deleting the task.
 function openEditTaskModal(task) {
-
   // Get button elements from the task modal
   elements.editTaskTitleInput.value = task.title;
   elements.editSelectStatus.value = task.status;
@@ -311,8 +308,8 @@ function openEditTaskModal(task) {
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
 
+// Saves the changes made to the task
 function saveTaskChanges(taskId) {
-
   // Create an object with the updated task details
    const updatedTask = {
     id: taskId,
@@ -330,7 +327,6 @@ function saveTaskChanges(taskId) {
   refreshTasksUI();
 }
 
-/*************************************************************************************************************************************************/
 
 document.addEventListener('DOMContentLoaded', function() {
   init(); // init is called after the DOM is fully loaded
