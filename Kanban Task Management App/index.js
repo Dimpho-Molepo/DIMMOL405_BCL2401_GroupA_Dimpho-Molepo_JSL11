@@ -68,7 +68,6 @@ const elements = {
 let activeBoard = ""
 
 // Extracts unique board names from tasks
-// TASK: FIX BUGS
 function fetchAndDisplayBoardsAndTasks() {
   const tasks = getTasks();
   const boards = [...new Set(tasks.map(task => task.board).filter(Boolean))];
@@ -83,7 +82,6 @@ function fetchAndDisplayBoardsAndTasks() {
 }
 
 // Creates different boards in the DOM
-// TASK: Fix Bugs
 function displayBoards(boards) {
   const boardsContainer = document.getElementById("boards-nav-links-div");
   boardsContainer.innerHTML = ''; // Clears the container
