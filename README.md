@@ -51,5 +51,8 @@ The Agile Board project offers several learning outcomes. By completing this pro
 + Working with local storage was a bit challenging, but I was able to figure it out.
 + Trying to code by using a starter code is trickier than I thought it would be because you really need to understand the code and how it works before you can start coding.
 
+## Loom Video
+[Loom Video](<https://www.loom.com/share/15dd33e119384af193ce8c9cc8554743?sid=aec624d9-cf29-4c99-8111-1844a71ae22d>)
+
 ## Author
 Dimpho Molepo
